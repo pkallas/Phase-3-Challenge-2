@@ -1,0 +1,23 @@
+{
+  "name": "part_2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "hotel.js",
+  "directories": {
+    "test": "test",
+    "db-init": "psql < schema.sql  && psql < load_data.sql",
+    "testdb-init": "psql < schema_test.sql && psql < load_data_test.sql"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "pkallas",
+  "license": "ISC",
+  "dependencies": {
+    "pg": "^7.3.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^3.5.0"
+  }
+}
