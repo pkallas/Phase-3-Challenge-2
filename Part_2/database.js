@@ -1,5 +1,4 @@
 const client = require('./pg');
-const print = require('node-print');
 const guestsSelect = 'SELECT * FROM guests';
 const roomsSelect = 'SELECT room_number, capacity, available FROM rooms';
 const availableRoomsSelect = `SELECT room_number, capacity, available FROM rooms
@@ -16,51 +15,31 @@ AND room_number = $1`;
 
 const guests = function (text) {
   return client.query(text)
-  .then(res => {
-    client.end();
-    print.pt(res.rows);
-    return res.rows;
-  })
+  .then(res => res.rows)
   .catch(error => console.log(error));
 };
 
 const rooms = function (text) {
   return client.query(text)
-  .then(res => {
-    client.end();
-    print.pt(res.rows);
-    return res.rows;
-  })
+  .then(res => res.rows)
   .catch(error => console.log(error));
 };
 
 const availableRooms = function (text) {
   return client.query(text)
-  .then(res => {
-    client.end();
-    print.pt(res.rows);
-    return res.rows;
-  })
+  .then(res => res.rows)
   .catch(error => console.log(error));
 };
 
 const bookings = function (text) {
   return client.query(text)
-  .then(res => {
-    client.end();
-    print.pt(res.rows);
-    return res.rows;
-  })
+  .then(res => res.rows)
   .catch(error => console.log(error));
 };
 
 const bookingsForRoom = function (text, roomNumber) {
   return client.query(text, [roomNumber])
-  .then(res => {
-    client.end();
-    print.pt(res.rows);
-    return res.rows;
-  })
+  .then(res => res.rows)
   .catch(error => console.log(error));
 };
 
