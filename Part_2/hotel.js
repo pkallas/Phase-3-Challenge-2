@@ -16,15 +16,30 @@ const optionalInput = process.argv[3];
 
 switch (process.argv[2]) {
   case 'guests':
-    guests(guestsSelect);
+    return guests(guestsSelect)
+    .then(res => {
+      client.end();
+      print.pt(res)
+    })
+    .catch(err => console.log(error));
     break;
 
   case 'rooms':
     if (!optionalInput) {
-      rooms(roomsSelect);
+      return rooms(roomsSelect)
+      .then(res => {
+        client.end();
+        print.pt(res)
+      })
+      .catch(err => console.log(error));
       break;
     } else if (optionalInput === '--available') {
-      availableRooms(availableRoomsSelect);
+      return availableRooms(availableRoomsSelect)
+      .then(res => {
+        client.end();
+        print.pt(res)
+      })
+      .catch(err => console.log(error));
       break;
     } else {
       console.log('Please enter a command after hotel.');
@@ -35,15 +50,25 @@ switch (process.argv[2]) {
 
   case 'bookings':
     if (!optionalInput) {
-      bookings(bookingsSelect);
+      return bookings(bookingsSelect)
+      .then(res => {
+        client.end();
+        print.pt(res)
+      })
+      .catch(err => console.log(error));
       break;
     } else {
-      bookingsForRoom(bookingsForRoomSelect, optionalInput);
+      return bookingsForRoom(bookingsForRoomSelect, optionalInput)
+      .then(res => {
+        client.end();
+        print.pt(res)
+      })
+      .catch(err => console.log(error));
       break;
     }
 
   default:
     console.log('Please enter a command after hotel.');
-    console.log('Commands are guests, rooms, and rooms --available.');
+    console.log('Commands are guests, rooms, rooms --available, bookings, and bookings followed by a room.');
     client.end();
 };
