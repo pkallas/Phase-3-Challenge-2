@@ -18,8 +18,8 @@ CREATE TABLE rooms(
 
 CREATE TABLE bookings(
   id SERIAL PRIMARY KEY,
-  room_id REFERENCES rooms (id),
-  guest_id REFERENCES guests (id),
+  room_id INTEGER REFERENCES rooms (id),
+  guest_id INTEGER REFERENCES guests (id),
   check_in DATE,
   check_out DATE
 );
