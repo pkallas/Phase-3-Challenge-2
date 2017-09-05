@@ -5,6 +5,7 @@ const {
   roomsSelect,
 } = require('./database');
 const client = require('./pg');
+const print = require('node-print');
 
 switch (process.argv[2]) {
   case 'guests':
