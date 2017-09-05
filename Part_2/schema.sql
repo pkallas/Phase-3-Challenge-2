@@ -13,7 +13,7 @@ CREATE TABLE rooms(
   id SERIAL PRIMARY KEY,
   room_number VARCHAR(250),
   capacity INTEGER,
-  available BOOLEAN DEFAULT false
+  available BOOLEAN DEFAULT true
 );
 
 CREATE TABLE bookings(
