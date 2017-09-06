@@ -2,16 +2,18 @@ process.env.NODE_ENV = 'test';
 const expect = require('chai').expect;
 const {
   guests,
-  guestsSelect,
   rooms,
-  roomsSelect,
   availableRooms,
-  availableRoomsSelect,
   bookings,
-  bookingsSelect,
   bookingsForRoom,
-  bookingsForRoomSelect,
 } = require('../database');
+const {
+  guestsSelect,
+  roomsSelect,
+  availableRoomsSelect,
+  bookingsSelect,
+  bookingsForRoomSelect,
+} = require('../sqlstatements');
 
 describe('function guests', function () {
   it('Should return all guests from the guests table', function () {
