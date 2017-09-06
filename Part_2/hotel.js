@@ -1,15 +1,17 @@
 const {
   guests,
-  guestsSelect,
   rooms,
-  roomsSelect,
   availableRooms,
-  availableRoomsSelect,
   bookings,
-  bookingsSelect,
   bookingsForRoom,
-  bookingsForRoomSelect,
 } = require('./database');
+const {
+  guestsSelect,
+  roomsSelect,
+  availableRoomsSelect,
+  bookingsSelect,
+  bookingsForRoomSelect,
+} = require('./sqlstatements');
 const client = require('./pg');
 const print = require('node-print');
 const optionalInput = process.argv[3];
@@ -21,7 +23,7 @@ switch (process.argv[2]) {
       client.end();
       print.pt(res)
     })
-    .catch(err => console.log(error));
+    .catch(error => console.log(error));
     break;
 
   case 'rooms':
@@ -31,7 +33,7 @@ switch (process.argv[2]) {
         client.end();
         print.pt(res)
       })
-      .catch(err => console.log(error));
+      .catch(error => console.log(error));
       break;
     } else if (optionalInput === '--available') {
       return availableRooms(availableRoomsSelect)
@@ -39,7 +41,7 @@ switch (process.argv[2]) {
         client.end();
         print.pt(res)
       })
-      .catch(err => console.log(error));
+      .catch(error => console.log(error));
       break;
     } else {
       console.log('Please enter a command after hotel.');
@@ -63,7 +65,7 @@ switch (process.argv[2]) {
         client.end();
         print.pt(res)
       })
-      .catch(err => console.log(error));
+      .catch(error => console.log(error));
       break;
     }
 
