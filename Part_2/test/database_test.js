@@ -59,6 +59,13 @@ describe('function rooms', function () {
       expect(res[17].room_number).to.eql('5A');
     });
   });
+
+  it('Should return a room even if it is not available', function () {
+    return rooms(roomsSelect)
+    .then(res => {
+      expect(res[17].available).to.eql(false);
+    });
+  });
 });
 
 describe('function availableRooms', function () {
