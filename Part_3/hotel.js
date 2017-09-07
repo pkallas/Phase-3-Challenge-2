@@ -45,6 +45,6 @@ function updateTotal() {
   let turnIntoMoney = /[a-zA-Z\$]/g;
   let roomPrice = htmlElements.roomPrice.innerHTML.replace(turnIntoMoney, '');
   let nights = htmlElements.numberOfNights.value;
-  let totalPrice = parseFloat(roomPrice * nights);
+  let totalPrice = parseFloat(roomPrice * nights).toFixed(2);
   htmlElements.totalPrice.innerHTML = '$' + totalPrice;
 };
