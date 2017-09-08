@@ -1,6 +1,6 @@
 const htmlElements = {
   closeButton: document.querySelector('#close-button'),
-  bookRoom: document.getElementsByClassName('book-room'),
+  bookRoom: document.querySelectorAll('.book-room'),
   modal: document.querySelector('#modal'),
   modalOverlay: document.querySelector('#modal-overlay'),
   roomNumber: document.querySelector('#room-number'),
@@ -10,15 +10,16 @@ const htmlElements = {
   confirmButton: document.querySelector('#confirm-button'),
 };
 
-window.onload = function () {
+document.addEventListener('DOMContentLoaded', function () {
   for (var i = 0; i < htmlElements.bookRoom.length; i++) {
     htmlElements.bookRoom[i].addEventListener('click', modalPopup);
     htmlElements.bookRoom[i].addEventListener('click', updateRoom);
   };
+
   htmlElements.closeButton.addEventListener('click', closeModal);
   htmlElements.numberOfNights.addEventListener('click', updateTotal);
   htmlElements.confirmButton.addEventListener('click', closeModal);
-};
+});
 
 // Change modal and modal-overlay display to be flex
 function modalPopup() {
@@ -35,16 +36,16 @@ function closeModal() {
 // Function to set the room number and price in the modal
 function updateRoom() {
   let tableRow = event.target.parentElement.parentElement.childNodes;
-  htmlElements.roomNumber.innerHTML = tableRow[1].innerHTML;
-  htmlElements.roomPrice.innerHTML = tableRow[5].innerHTML;
-  htmlElements.totalPrice.innerHTML = tableRow[5].innerHTML;
+  htmlElements.roomNumber.innerText = tableRow[1].innerText;
+  htmlElements.roomPrice.innerText = tableRow[5].innerText;
+  htmlElements.totalPrice.innerText = tableRow[5].innerText;
 };
 
 // Function to update the total price
 function updateTotal() {
   let turnIntoMoney = /[a-zA-Z\$]/g;
-  let roomPrice = htmlElements.roomPrice.innerHTML.replace(turnIntoMoney, '');
+  let roomPrice = htmlElements.roomPrice.innerText.replace(turnIntoMoney, '');
   let nights = htmlElements.numberOfNights.value;
   let totalPrice = parseFloat(roomPrice * nights).toFixed(2);
-  htmlElements.totalPrice.innerHTML = '$' + totalPrice;
+  htmlElements.totalPrice.innerText = '$' + totalPrice;
 };
