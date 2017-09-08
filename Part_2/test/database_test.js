@@ -151,9 +151,9 @@ describe('function bookingsForRoom', function () {
   });
 
   it('Should return all bookings for 4A', function () {
-    bookingsForRoom('4A')
+    return bookingsForRoom('4A')
     .then(res => {
-      res.forEach(index => expect(index.room_number).to.eql('4B'));
+      res.forEach(index => expect(index.room_number).to.eql('4A'));
     });
   });
 

@@ -11,7 +11,7 @@ const optionalInput = process.argv[3];
 
 switch (process.argv[2]) {
   case 'guests':
-    return guests()
+     guests()
     .then(res => {
       client.end();
       print.pt(res)
@@ -21,7 +21,7 @@ switch (process.argv[2]) {
 
   case 'rooms':
     if (!optionalInput) {
-      return rooms()
+      rooms()
       .then(res => {
         client.end();
         print.pt(res)
@@ -29,7 +29,7 @@ switch (process.argv[2]) {
       .catch(error => console.log(error));
       break;
     } else if (optionalInput === '--available') {
-      return availableRooms()
+      availableRooms()
       .then(res => {
         client.end();
         print.pt(res)
@@ -45,7 +45,7 @@ switch (process.argv[2]) {
 
   case 'bookings':
     if (!optionalInput) {
-      return bookings()
+      bookings()
       .then(res => {
         client.end();
         print.pt(res)
@@ -53,7 +53,7 @@ switch (process.argv[2]) {
       .catch(err => console.log(error));
       break;
     } else {
-      return bookingsForRoom(optionalInput)
+      bookingsForRoom(optionalInput)
       .then(res => {
         client.end();
         print.pt(res)
