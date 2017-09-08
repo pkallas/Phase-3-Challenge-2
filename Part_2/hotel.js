@@ -5,20 +5,13 @@ const {
   bookings,
   bookingsForRoom,
 } = require('./database');
-const {
-  guestsSelect,
-  roomsSelect,
-  availableRoomsSelect,
-  bookingsSelect,
-  bookingsForRoomSelect,
-} = require('./sqlstatements');
 const client = require('./pg');
 const print = require('node-print');
 const optionalInput = process.argv[3];
 
 switch (process.argv[2]) {
   case 'guests':
-    return guests(guestsSelect)
+    return guests()
     .then(res => {
       client.end();
       print.pt(res)
@@ -28,7 +21,7 @@ switch (process.argv[2]) {
 
   case 'rooms':
     if (!optionalInput) {
-      return rooms(roomsSelect)
+      return rooms()
       .then(res => {
         client.end();
         print.pt(res)
@@ -36,7 +29,7 @@ switch (process.argv[2]) {
       .catch(error => console.log(error));
       break;
     } else if (optionalInput === '--available') {
-      return availableRooms(availableRoomsSelect)
+      return availableRooms()
       .then(res => {
         client.end();
         print.pt(res)
@@ -45,14 +38,14 @@ switch (process.argv[2]) {
       break;
     } else {
       console.log('Please enter a command after hotel.');
-      console.log('Commands are guests, rooms, and rooms --available.');
+      console.log('Commands are guests, rooms, rooms --available, bookings, and bookings followed by a room.');
       client.end();
       break;
     };
 
   case 'bookings':
     if (!optionalInput) {
-      return bookings(bookingsSelect)
+      return bookings()
       .then(res => {
         client.end();
         print.pt(res)
@@ -60,7 +53,7 @@ switch (process.argv[2]) {
       .catch(err => console.log(error));
       break;
     } else {
-      return bookingsForRoom(bookingsForRoomSelect, optionalInput)
+      return bookingsForRoom(optionalInput)
       .then(res => {
         client.end();
         print.pt(res)

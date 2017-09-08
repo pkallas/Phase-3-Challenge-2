@@ -1,8 +1,8 @@
 \c hotel_db
 
-COPY guests (name, email) FROM '/Users/pkallas/Desktop/Phase_3_Challenge_2/Part_2/guests.csv' DELIMITERS ',' CSV;
-COPY rooms (room_number, capacity) FROM '/Users/pkallas/Desktop/Phase_3_Challenge_2/Part_2/rooms.csv' DELIMITERS ',' CSV;
-COPY bookings (room_id, guest_id, check_in, check_out) FROM '/Users/pkallas/Desktop/Phase_3_Challenge_2/Part_2/bookings.csv' DELIMITERS ',' CSV;
+COPY guests (name, email) FROM '/Users/pkallas/Desktop/Phase_3_Challenge_2/Part_2/csvfiles/guests.csv' DELIMITERS ',' CSV;
+COPY rooms (room_number, capacity) FROM '/Users/pkallas/Desktop/Phase_3_Challenge_2/Part_2/csvfiles/rooms.csv' DELIMITERS ',' CSV;
+COPY bookings (room_id, guest_id, check_in, check_out) FROM '/Users/pkallas/Desktop/Phase_3_Challenge_2/Part_2/csvfiles/bookings.csv' DELIMITERS ',' CSV;
 
 -- After data has been loaded into the database, update the rooms table to reflect bookings.
 -- Available column in rooms table should be set to false if a guest has not yet checked out.
